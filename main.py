@@ -11,7 +11,6 @@ appslist = '''
 [3] Text Editor \n
 [4] Calculator \n
 [5] File Explorer\n
-[6] Webcam \n
 [e] exit \n'''
 
 def main():
@@ -35,7 +34,8 @@ def apps():
         recurse()
         
     elif app == '2':
-        subprocess.run('firefox', shell=True, check=True)
+        print(webbrowser.get(using=None))
+        webbrowser.open_new('https://www.google.com/')
         subprocess.run('clear')
         recurse()
         
@@ -49,13 +49,14 @@ def apps():
         subprocess.run('clear')
         recurse()
     elif app == '5':
-        subprocess.run('nautilus')
+        try:
+            subprocess.run('nautilus')
+        except FileNotFoundError:
+            browser = input('techincal name for your file browser? ')
+            subprocess.run(browser)
+            
         subprocess.run('clear')
         recurse()
-    elif app == '6':
-       subprocess.run('cheese')
-       subprocess.run('clear')
-       recurse()
         
     elif app == 'e':
         subprocess.run('clear')
