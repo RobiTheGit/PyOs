@@ -34,7 +34,6 @@ def apps():
         recurse()
         
     elif app == '2':
-        print(webbrowser.get(using=None))
         webbrowser.open_new('https://www.google.com/')
         subprocess.run('clear')
         recurse()
