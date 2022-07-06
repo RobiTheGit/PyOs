@@ -39,7 +39,11 @@ def apps():
         recurse()
         
     elif app == '3':
-        subprocess.run('vim')
+        try:
+            subprocess.run('vim')
+        except FileNotFoundError:
+            edit = input('techincal name for your text editor? ')
+            subprocess.run(edit)    
         subprocess.run('clear')
         recurse()
         
