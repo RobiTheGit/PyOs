@@ -1,7 +1,7 @@
 import sys
 import os
 import subprocess
-
+subprocess.run('clear')
 def math(): #define function math
     x = input("X=? ") #ask for user input for X
     math = input("Math Function(add, subtract, multiply, divide, power, root3, root2, x^y, y^x, convert)? ")#same but for math type
