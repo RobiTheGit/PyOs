@@ -4,12 +4,26 @@ import sys
 import time
 import colors
 import mkfil
+
 home = os.getcwd()
 dire = ''
+exittype = 'term'
 c1 = colors.ccodes[5]
 c2 = colors.ccodes[0]
 c3 = colors.ccodes[1]
 prevdire = ''
+def exit():
+    try:
+        if exittype == 'term':
+             raise SystemExit
+        else:
+            subprocess.run('python3 main.py', shell=True, check=True)
+    except:
+         subprocess.run('python3 main.py', shell=True, check=True)
+         subprocess.run('pkill -9 -f term.py', shell=True, check=True)
+         sys.exit(0)
+         exit()
+         quit()
 def cd():
     global dire
     global prevdire
@@ -42,7 +56,10 @@ def clock():
         subprocess.run('clear')
         clock()
     except:
-        recurse()
+        if exittype == 'term':
+             recurse()
+        else:
+            subprocess.run('python3 main.py', shell=True, check=True)
 def colorset():
     global c1
     global c2
@@ -68,8 +85,7 @@ def loop():
     prevdire = dire
     command = input(f'\033{c1}User@Pyterm\033{c2}:\033{c3}~/{dire}\033[1;37;40m$ ')
     if command == 'exit': 
-        subprocess.run('clear')
-        os._exit(0)
+        exit()
         
     if command == 'ctime':
         clock()
@@ -108,13 +124,17 @@ def loop():
     recurse()
     
 
-def recurse():
-    loop()
-    recurse()
+def recurse():    
+    try:
+        loop()
+        recurse()
+    except:
+        subprocess.run('python3','main.py')
+
 
 def init():
     subprocess.run('clear')
     recurse()
 
 
-init()
+

@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import colors
+import term
 
 c1 = colors.ccodes[5]
 c2 = colors.ccodes[0]
@@ -13,7 +14,9 @@ appslist = '''
 [3] Text Editor \n
 [4] Calculator \n
 [5] File Explorer\n
-[e] exit \n'''
+[6] Calendar\n
+[7] Clock \n
+[exit] exit \n'''
 
 def main():
     subprocess.run('clear')
@@ -31,7 +34,7 @@ def apps():
     print(appslist)
     app = input('What app would you like to run? ')
     if app == '1':
-        subprocess.run('python3 term.py', shell=True, check=True)
+        term.init()
         subprocess.run('clear')
         recurse()
         
@@ -63,15 +66,29 @@ def apps():
         subprocess.run('clear')
         recurse()
         
-    elif app == 'e':
+    if app == '6':
+        subprocess.run('python3 cal.py', shell=True, check=True)
         subprocess.run('clear')
-        quit()
-        
+        recurse() 
+    
+    if app == '7':
+        term.exittype = 'main'
+        term.clock()
+               
+    elif app == 'e':
+        term.exittype = 'term'
+        term.exit()
+        subprocess.run('clear')
+        subprocess.run('pkill -9 -f main.py', shell=True, check=True)
+        raise SystemExit
+        subprocess.run('clear')
+        subprocess.run('pkill -9 -f main.py', shell=True, check=True)
+      
     else:
         subprocess.run('clear')
         
 def recurse():
     apps()
     recurse()
-            
+        
 main()
