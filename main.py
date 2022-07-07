@@ -75,7 +75,7 @@ def apps():
         term.exittype = 'main'
         term.clock()
                
-    elif app == 'e':
+    elif app == 'exit':
         term.exittype = 'term'
         term.exit()
         subprocess.run('clear')
