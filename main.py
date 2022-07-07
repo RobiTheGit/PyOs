@@ -3,8 +3,10 @@ import os
 import sys
 import subprocess
 import colors
+
 c1 = colors.ccodes[5]
 c2 = colors.ccodes[0]
+
 appslist = '''
 [1] Terminal \n
 [2] Browser \n
@@ -64,6 +66,7 @@ def apps():
     elif app == 'e':
         subprocess.run('clear')
         quit()
+        
     else:
         subprocess.run('clear')
         
