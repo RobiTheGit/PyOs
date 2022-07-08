@@ -16,7 +16,7 @@ appslist = '''
 [5] File Explorer\n
 [6] Calendar\n
 [7] Clock \n
-[exit] exit \n'''
+[^Z] exit \n'''
 
 def main():
     subprocess.run('clear')
@@ -58,7 +58,7 @@ def apps():
         recurse()
     elif app == '5':
         try:
-            subprocess.run('nautilus')
+            subprocess.run('nautilus --new-window -s PyOs', shell=True, check=True)
         except FileNotFoundError:
             browser = input('techincal name for your file browser? ')
             subprocess.run(browser)
@@ -75,7 +75,7 @@ def apps():
         term.exittype = 'main'
         term.clock()
                
-    elif app == 'exit':
+    elif app == 'e':
         term.exittype = 'term'
         term.exit()
         subprocess.run('clear')
