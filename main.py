@@ -74,15 +74,6 @@ def apps():
     if app == '7':
         term.exittype = 'main'
         term.clock()
-               
-    elif app == 'e':
-        term.exittype = 'term'
-        term.exit()
-        subprocess.run('clear')
-        subprocess.run('pkill -9 -f main.py', shell=True, check=True)
-        raise SystemExit
-        subprocess.run('clear')
-        subprocess.run('pkill -9 -f main.py', shell=True, check=True)
       
     else:
         subprocess.run('clear')
