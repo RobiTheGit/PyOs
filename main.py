@@ -4,6 +4,10 @@ import sys
 import subprocess
 import colors
 import term
+from datetime import date
+today = date.today()
+nyd = date(today.year, 12, 31)
+timetilnyd = nyd - today
 
 c1 = colors.ccodes[5]
 c2 = colors.ccodes[0]
@@ -16,7 +20,8 @@ appslist = '''
 [5] File Explorer\n
 [6] Calendar\n
 [7] Clock \n
-[^Z] exit \n'''
+[^Z] Shutdown PyOs (not system) \n
+'''
 
 def main():
     subprocess.run('clear')
@@ -31,6 +36,7 @@ def apps():
  |_|    |_| \___/|____/ 
                             
     \033{c2}""")
+    print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
     print(appslist)
     app = input('What app would you like to run? ')
     if app == '1':
@@ -73,7 +79,9 @@ def apps():
     
     if app == '7':
         term.exittype = 'main'
+        subprocess.run('clear')
         term.clock()
+
       
     else:
         subprocess.run('clear')

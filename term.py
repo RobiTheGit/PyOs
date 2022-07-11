@@ -50,6 +50,7 @@ def spaceremoval():
         print('Operation aborted')
         recurse()
 def clock():
+    print('PyOs Clock')
     try:
         print(time.ctime())
         time.sleep(1)
@@ -89,6 +90,9 @@ def loop():
         
     if command == 'ctime':
         clock()
+
+    if command == 'gui':
+        subprocess.run('python3 main.py', shell=True)
         
         
     if command == 'colorset':
