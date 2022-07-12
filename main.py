@@ -8,8 +8,13 @@ from datetime import date
 today = date.today()
 nyd = date(today.year, 12, 31)
 timetilnyd = nyd - today
-todayholiday = ''
-
+PyOsLogo = '''
+  ______   _____  ____  
+ |  _ \ \ / / _ \/ ___| 
+ | |_) \ V / | | \___ \ 
+ |  __/ | || |_| |___) |
+ |_|    |_| \___/|____/ 
+'''
 if today == date(today.year, 12, 25):
     todayholiday = 'Christmas'
     theme = 'Festive'
@@ -20,9 +25,11 @@ elif today == date(today.year, 12, 24):
     
 elif today == date(today.year , 1, 1 ):
     todayholiday = 'New Years Day'
+    theme = 'default'
     
 elif today == nyd:
     todayholiday = 'New Years Eve'
+    theme = 'default'
     
 elif today == date(today.year, 7, 4):
     todayholiday = 'Fourth of July'
@@ -35,6 +42,7 @@ elif today == date(today.year, 10, 31):
     theme = 'Spooky'
  
 else:
+    todayholiday = ''
     theme = 'default'    
    
 if theme == 'Festive':
@@ -70,12 +78,7 @@ def main():
 
 def apps():
     print(f"""\033{c1}
-  ______   _____  ____  
- |  _ \ \ / / _ \/ ___| 
- | |_) \ V / | | \___ \ 
- |  __/ | || |_| |___) |
- |_|    |_| \___/|____/ 
-                            
+    {PyOsLogo}                            
     \033{c2}""")
     print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
     print('Holdiays:',todayholiday)
