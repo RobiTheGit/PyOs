@@ -8,10 +8,51 @@ from datetime import date
 today = date.today()
 nyd = date(today.year, 12, 31)
 timetilnyd = nyd - today
+todayholiday = ''
 
-c1 = colors.ccodes[5]
-c2 = colors.ccodes[0]
-
+if today == date(today.year, 12, 25):
+    todayholiday = 'Christmas'
+    theme = 'Festive'
+    
+elif today == date(today.year, 12, 24):
+    todayholiday = 'Christmas Eve'
+    theme = 'Festive'
+    
+elif today == date(today.year , 1, 1 ):
+    todayholiday = 'New Years Day'
+    
+elif today == nyd:
+    todayholiday = 'New Years Eve'
+    
+elif today == date(today.year, 7, 4):
+    todayholiday = 'Fourth of July'
+    theme = 'America'
+    c1 = colors.ccodes[6]
+    c2 = colors.ccodes[3]
+    
+elif today == date(today.year, 10, 31):
+    todayholiday = 'Halloween'
+    theme = 'Spooky'
+ 
+else:
+    theme = 'default'    
+   
+if theme == 'Festive':
+    c1 = colors.ccodes[5]
+    c2 = colors.ccodes[6]
+elif theme == 'default':
+    c1 = colors.ccodes[5]
+    c2 = colors.ccodes[0]
+elif theme == 'Spooky':
+    c1 = colors.ccodes[4]
+    c2 = colors.ccodes[4] 
+elif theme == 'America':
+    c1 = colors.ccodes[6]
+    c2 = colors.ccodes[3]
+else:
+    c1 = colors.ccodes[5]
+    c2 = colors.ccodes[0]   
+    
 appslist = '''
 [1] Terminal \n
 [2] Browser \n
@@ -37,6 +78,7 @@ def apps():
                             
     \033{c2}""")
     print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
+    print('Holdiays:',todayholiday)
     print(appslist)
     app = input('What app would you like to run? ')
     if app == '1':

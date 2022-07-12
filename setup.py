@@ -1,5 +1,6 @@
 import os
 import time
+print('This should only be ran when your first get PyOs')
 print('making directories')
 os.mkdir('Downloads')
 print('Downloads made')
