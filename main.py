@@ -4,7 +4,11 @@ import sys
 import subprocess
 import colors
 import term
+import time
+import getpass
 from datetime import date
+correctpass = open('user/password.pass')
+cpass = correctpass.read()
 today = date.today()
 nyd = date(today.year, 12, 31)
 timetilnyd = nyd - today
@@ -15,6 +19,7 @@ PyOsLogo = '''
  |  __/ | || |_| |___) |
  |_|    |_| \___/|____/ 
 '''
+username = getpass.getuser()
 if today == date(today.year, 12, 25):
     todayholiday = 'Christmas'
     theme = 'Festive'
@@ -29,7 +34,7 @@ elif today == date(today.year , 1, 1 ):
     
 elif today == nyd:
     todayholiday = 'New Years Eve'
-    theme = 'default'
+    
     
 elif today == date(today.year, 7, 4):
     todayholiday = 'Fourth of July'
@@ -59,8 +64,9 @@ elif theme == 'America':
     c2 = colors.ccodes[3]
 else:
     c1 = colors.ccodes[5]
-    c2 = colors.ccodes[0]   
-    
+    c2 = colors.ccodes[0] 
+      
+#[x] App name    
 appslist = '''
 [1] Terminal \n
 [2] Browser \n
@@ -71,17 +77,23 @@ appslist = '''
 [7] Clock \n
 [^Z] Shutdown PyOs (not system) \n
 '''
-
 def main():
     subprocess.run('clear')
-    apps()
-
+    passw = getpass.getpass('Password: ', stream=None)
+    if passw == cpass:
+        apps()
+    else:
+        print('INVALID PASSWORD')
+        time.sleep(0.5)
+        main()
 def apps():
+    subprocess.run('clear')
     print(f"""\033{c1}
     {PyOsLogo}                            
     \033{c2}""")
     print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
     print('Holdiays:',todayholiday)
+    print('Welcome', username)
     print(appslist)
     app = input('What app would you like to run? ')
     if app == '1':
@@ -130,6 +142,10 @@ def apps():
       
     else:
         subprocess.run('clear')
+        print('INVALID APP!')
+        time.sleep(1)
+        subprocess.run('clear')
+        recurse()
         
 def recurse():
     apps()
