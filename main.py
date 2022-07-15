@@ -8,6 +8,7 @@ import time
 import getpass
 from datetime import date
 import pyoslogo
+
 correctpass = open('user/password.pass')
 cpass = correctpass.read()
 today = date.today()
@@ -81,6 +82,7 @@ appslist = '''
 '''
 def main():
     subprocess.run('clear')
+    print(f'Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
         apps()
@@ -123,7 +125,7 @@ def apps():
         recurse()
     elif app == '5':
         try:
-            subprocess.run('nautilus --new-window -s PyOs', shell=True, check=True)
+            subprocess.run('nautilus --new-window -s user', shell=True, check=True)
         except FileNotFoundError:
             browser = input('techincal name for your file browser? ')
             subprocess.run(browser)
