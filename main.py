@@ -78,6 +78,7 @@ appslist = '''
 [5] File Explorer\n
 [6] Calendar\n
 [7] Clock \n
+[8] Settings \n
 [^Z] Shutdown PyOs (not system) \n
 '''
 def main():
@@ -90,6 +91,7 @@ def main():
         print('INVALID PASSWORD')
         time.sleep(0.5)
         main()
+        
 def apps():
     subprocess.run('clear')
     print(f"""\033{c1}
@@ -142,7 +144,11 @@ def apps():
         term.exittype = 'main'
         subprocess.run('clear')
         term.clock()
-
+        
+    if app == '8':
+        subprocess.run('python3 options.py', shell=True, check=True)
+        subprocess.run('clear')
+        recurse()
       
     else:
         subprocess.run('clear')

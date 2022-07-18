@@ -1,10 +1,11 @@
 import os
 import time
 import subprocess
+import getpass
 
 def setpwd():
     f = open('user/password.pass', 'w')
-    password = input('Set Password. ')
+    password = getpass.getpass('Password: ', stream=None)
     f.write(password)
 
 print('This should only be ran when your first get PyOs')
