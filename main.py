@@ -16,14 +16,17 @@ nyd = date(today.year, 12, 31)
 timetilnyd = nyd - today
 white = colors.ccodes[0]
 PyOsLogo = pyoslogo.PyOsLogo
-
+theme = ''
 username = getpass.getuser()
+
 if today == date(today.year, 12, 25):
     todayholiday = 'Christmas'
+    PyOsLogo =pyoslogo.PyOSLogoC
     theme = 'Festive'
     
 elif today == date(today.year, 12, 24):
     todayholiday = 'Christmas Eve'
+    PyOsLogo =pyoslogo.PyOSLogoC
     theme = 'Festive'
     
 elif today == date(today.year , 1, 1 ):
@@ -48,17 +51,12 @@ elif today == date(today.year, 10, 31):
     theme = 'Spooky'
     PyOsLogo = pyoslogo.PyOSLogoH
 else:
-    todayholiday = ''
-    theme = 'default'    
+    todayholiday = ''   
    
 if theme == 'Festive':
     c1 = colors.ccodes[5]
     c2 = colors.ccodes[6]
-    PyOsLogo =pyoslogo.PyOSLogoC
-    
-elif theme == 'default':
-    c1 = colors.ccodes[5]
-    c2 = colors.ccodes[1]
+
 elif theme == 'Spooky':
     c1 = colors.ccodes[4]
     c2 = colors.ccodes[4] 
@@ -78,8 +76,8 @@ appslist = '''
 [5] File Explorer\n
 [6] Calendar\n
 [7] Clock \n
-[8] Settings \n
-[^Z] Shutdown PyOs (not system) \n
+[8] Change Password \n
+Press Ctrl_Z to shutdown PyOs (not system) \n
 '''
 def main():
     subprocess.run('clear')
@@ -151,7 +149,6 @@ def apps():
         recurse()
       
     else:
-        subprocess.run('clear')
         print('INVALID APP!')
         time.sleep(1)
         subprocess.run('clear')
