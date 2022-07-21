@@ -52,7 +52,7 @@ elif today == date(today.year, 10, 31):
     PyOsLogo = pyoslogo.PyOSLogoH
     
 elif today == date(today.year, 9, 28):
-    todayholiday = 'Logan Stout of ISU ITS Birthday'
+    todayholiday = 'Dad\'s Birthday'
     PyOsLogo =pyoslogo.PyOSLogo
     theme = 'Spooky'
 else:
