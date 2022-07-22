@@ -8,6 +8,7 @@ import time
 import getpass
 from datetime import date
 import pyoslogo
+import messages
 
 correctpass = open('user/password.pass')
 cpass = correctpass.read()
@@ -52,7 +53,7 @@ elif today == date(today.year, 10, 31):
     PyOsLogo = pyoslogo.PyOSLogoH
     
 elif today == date(today.year, 9, 28):
-    todayholiday = 'Dad\'s Birthday'
+    todayholiday = "Dad's Birthday"
     PyOsLogo =pyoslogo.PyOSLogo
     theme = 'Spooky'
 else:
@@ -102,6 +103,7 @@ def apps():
     \033{c2}""")
     print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
     print('Holdiays:',todayholiday)
+    print(messages.motd)
     print('Welcome', f'\033{white}{username}')
     print(appslist)
     app = input(f'\033[1;37;40mWhat app would you like to run? ')
@@ -130,7 +132,7 @@ def apps():
         recurse()
     elif app == '5':
         try:
-            subprocess.run('nautilus --new-window -s user', shell=True, check=True)
+            subprocess.run('nautilus --new-window -s user/', shell=True, check=True)
         except FileNotFoundError:
             browser = input('techincal name for your file browser? ')
             subprocess.run(browser)
