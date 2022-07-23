@@ -73,47 +73,165 @@ else:
     c1 = colors.ccodes[5]
     c2 = colors.ccodes[1] 
       
-#[x] App name    
+#*[x] App name*   
 appslist = '''
-[1] Terminal \n
-[2] Browser \n
-[3] Text Editor \n
-[4] Calculator \n
-[5] File Explorer\n
-[6] Calendar\n
-[7] Clock \n
-[8] Change Password \n
-Press Ctrl_Z to shutdown PyOs (not system) \n
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+*[5] File Explorer   *
+*[6] Calendar        *
+*[7] Clock           *
+*[8] Change Password *
+**********************
+Press Ctrl*Z to shutdown PyOs (not system)
 '''
 def main():
     subprocess.run('clear')
     print(f'Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
-        apps()
+        started()
     else:
         print('INVALID PASSWORD')
         time.sleep(0.5)
         main()
-        
-def apps():
+def started():
     subprocess.run('clear')
     print(f"""\033{c1}
     {PyOsLogo}                            
     \033{c2}""")
     print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
     print('Holdiays:',todayholiday)
-    print(messages.motd)
     print('Welcome', f'\033{white}{username}')
+    time.sleep(2)
+    subprocess.run('clear')
+    applistanimation()
+    
+def applistanimation():
+    appslist = '''
+**********************
+*APPS MENU           *
+********************** 
+'''
     print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+********************** 
+'''
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')    
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+*[5] File Explorer   *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+*[5] File Explorer   *
+*[6] Calendar        *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+*[5] File Explorer   *
+*[6] Calendar        *
+*[7] Clock           *
+********************** 
+''' 
+    print(appslist)
+    time.sleep(0.05)
+    subprocess.run('clear')   
+    appslist = '''
+**********************
+*APPS MENU           *
+*[1] Terminal        *
+*[2] Browser         *
+*[3] Text Editor     *
+*[4] Calculator      *
+*[5] File Explorer   *
+*[6] Calendar        *
+*[7] Clock           *
+*[8] Change Password *
+********************** 
+'''
+    subprocess.run('clear') 
+    apps()
+    
+          
+def apps():
+    print(appslist)
+    print('Message of the day:', messages.motd)
     app = input(f'\033[1;37;40mWhat app would you like to run? ')
+    
     if app == '1':
         term.init()
         subprocess.run('clear')
         recurse()
         
     elif app == '2':
-        webbrowser.open_new('https://www.google.com/')
+        webbrowser.open*new('https://www.google.com/')
         subprocess.run('clear')
         recurse()
         
@@ -130,6 +248,7 @@ def apps():
         subprocess.run('python3 calc.py', shell=True, check=True)
         subprocess.run('clear')
         recurse()
+        
     elif app == '5':
         try:
             subprocess.run('nautilus --new-window -s user/', shell=True, check=True)
@@ -162,7 +281,10 @@ def apps():
         recurse()
         
 def recurse():
-    apps()
+    started()
     recurse()
-        
+    
+subprocess.run('clear')
+print('Starting ...')
+time.sleep(0.5)        
 main()

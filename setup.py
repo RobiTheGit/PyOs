@@ -9,6 +9,7 @@ def setpwd():
     f.write(password)
 
 print('This should only be ran when your first get PyOs')
+
 try:
     print('making directories')
     os.mkdir('user/Downloads')

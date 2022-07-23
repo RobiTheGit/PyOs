@@ -42,13 +42,8 @@ def cd():
             dire = prevdire
             
 def spaceremoval():
-    cont = input('this will delete all spaces from this directory onwards, do you really want to do this? y/N ')
-    if cont == 'y':
-        subprocess.run('python3 removespace.py', shell=True, check=True)
-        recurse()
-    else:
-        print('Operation aborted')
-        recurse()
+    subprocess.run('python3 removespace.py', shell=True, check=True)
+    recurse()
 def clock():
     print('PyOs Clock')
     try:
