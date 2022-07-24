@@ -22,4 +22,5 @@ def recurse(path, start=True): #new function recurse, using path, and now start 
     if not start: #if start not true
         rename(path) #rename the file path
 
+start = input('WARNING! This will delete all spaces from this directory onwards, do you really want to do this? press ctrl-c to cancel, otherwise press enter')
 recurse(Path()) #keep this going

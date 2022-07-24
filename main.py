@@ -90,6 +90,7 @@ Press Ctrl*Z to shutdown PyOs (not system)
 '''
 def main():
     subprocess.run('clear')
+    print(pyoslogo.PyOsLoginLogo)
     print(f'Login for {username}')
     passw = getpass.getpass('Password: ', stream=None)
     if passw == cpass:
@@ -103,9 +104,6 @@ def started():
     print(f"""\033{c1}
     {PyOsLogo}                            
     \033{c2}""")
-    print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
-    print('Holdiays:',todayholiday)
-    print('Welcome', f'\033{white}{username}')
     time.sleep(2)
     subprocess.run('clear')
     applistanimation()
@@ -116,7 +114,7 @@ def applistanimation():
 *APPS MENU           *
 ********************** 
 '''
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -125,7 +123,7 @@ def applistanimation():
 *[1] Terminal        *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -135,7 +133,7 @@ def applistanimation():
 *[2] Browser         *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -146,7 +144,7 @@ def applistanimation():
 *[3] Text Editor     *
 ********************** 
 '''
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')    
     appslist = '''
@@ -158,7 +156,7 @@ def applistanimation():
 *[4] Calculator      *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -171,7 +169,7 @@ def applistanimation():
 *[5] File Explorer   *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -185,7 +183,7 @@ def applistanimation():
 *[6] Calendar        *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -200,7 +198,7 @@ def applistanimation():
 *[7] Clock           *
 ********************** 
 ''' 
-    print(appslist)
+    print(f'\033{white}', appslist)
     time.sleep(0.05)
     subprocess.run('clear')   
     appslist = '''
@@ -221,7 +219,10 @@ def applistanimation():
     
           
 def apps():
-    print(appslist)
+    print(f'\033{white}', appslist)
+    print(f'Today is \033[1;36;40m {today}\033{c2}, Days til the new year, \033[1;33;40m', abs(timetilnyd.days), f'\033{c2}')
+    print('Holdiays:',todayholiday)
+    print('Welcome', f'\033{white}{username}')
     print('Message of the day:', messages.motd)
     app = input(f'\033[1;37;40mWhat app would you like to run? ')
     
@@ -270,7 +271,7 @@ def apps():
         term.clock()
         
     if app == '8':
-        subprocess.run('python3 options.py', shell=True, check=True)
+        subprocess.run('python3 pswdset.py', shell=True, check=True)
         subprocess.run('clear')
         recurse()
       
@@ -281,7 +282,7 @@ def apps():
         recurse()
         
 def recurse():
-    started()
+    apps()
     recurse()
     
 subprocess.run('clear')
