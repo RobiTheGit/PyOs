@@ -44,18 +44,7 @@ def cd():
 def spaceremoval():
     subprocess.run('python3 removespace.py', shell=True, check=True)
     recurse()
-def clock():
-    print('PyOs Clock')
-    try:
-        print(time.ctime())
-        time.sleep(1)
-        subprocess.run('clear')
-        clock()
-    except:
-        if exittype == 'term':
-             recurse()
-        else:
-            subprocess.run('python3 main.py', shell=True, check=True)
+
 def colorset():
     global c1
     global c2
@@ -136,4 +125,4 @@ def init():
     recurse()
 
 
-
+init()
